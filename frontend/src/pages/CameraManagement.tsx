@@ -8,7 +8,7 @@ import { Select } from '../components/ui/Select';
 import { Dialog } from '../components/ui/Dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/Table';
 import { useAuth } from '../context/AuthContext';
-import { Plus, Pencil, Trash2, RefreshCw, Camera, Radio } from 'lucide-react';
+import { Plus, Pencil, Trash2, RefreshCw, Camera } from 'lucide-react';
 
 const AI_MODELS = ['object', 'face', 'license_plate', 'crowd', 'weapon'];
 const defaultForm = { name: '', url: '', location: '', zone: '', status: 'active', aiModels: ['object'] as string[], sensitivity: 0.75 };
