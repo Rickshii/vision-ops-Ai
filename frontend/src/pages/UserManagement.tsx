@@ -72,7 +72,7 @@ export const UserManagement: React.FC = () => {
     <div className="space-y-5 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Access Control</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Access Control</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Manage user roles, permissions, and account status</p>
         </div>
         <Button variant="secondary" size="sm" onClick={load} className="gap-1.5">
@@ -85,7 +85,7 @@ export const UserManagement: React.FC = () => {
         {roleSummary.map(r => {
           const Icon = r.icon;
           return (
-            <div key={r.role} className="rounded-2xl glassmorphism border border-white/8 p-5 transition-all hover:-translate-y-0.5 hover:border-white/15 duration-300">
+            <div key={r.role} className="rounded-2xl glassmorphism border border-slate-200 dark:border-white/8 p-5 transition-all hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-white/15 duration-300">
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{r.role}s</p>
@@ -115,17 +115,17 @@ export const UserManagement: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-white/5">
+                <tr className="border-b border-slate-200 dark:border-white/5">
                   <th className="text-left py-2 pr-4 text-muted-foreground font-bold uppercase tracking-widest text-[10px]">Permission</th>
                   {['Admin', 'Operator', 'Viewer'].map(r => (
                     <th key={r} className="text-center py-2 px-4 text-muted-foreground font-bold uppercase tracking-widest text-[10px]">{r}</th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-slate-200 dark:divide-white/5">
                 {permissions.map(([perm, admin, op, viewer]) => (
-                  <tr key={perm as string} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-2 pr-4 text-slate-300">{perm as string}</td>
+                  <tr key={perm as string} className="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
+                    <td className="py-2 pr-4 text-slate-700 dark:text-slate-300">{perm as string}</td>
                     {[admin, op, viewer].map((has, i) => (
                       <td key={i} className="text-center py-2 px-4">
                         {has ? <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 mx-auto" /> : <span className="text-muted-foreground">—</span>}
@@ -170,12 +170,12 @@ export const UserManagement: React.FC = () => {
                         <img src={u.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(u.name)}&background=A855F7&color=fff&size=64`}
                           alt={u.name} className="h-8 w-8 rounded-lg object-cover border border-[#A855F7]/20" />
                         <div>
-                          <p className="text-sm font-semibold text-slate-200">{u.name}</p>
+                          <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">{u.name}</p>
                           {u.phone && <p className="text-[10px] text-muted-foreground">{u.phone}</p>}
                         </div>
                       </div>
                     </TableCell>
-                    <TableCell><span className="text-xs text-slate-300 font-mono">{u.email}</span></TableCell>
+                    <TableCell><span className="text-xs text-slate-700 dark:text-slate-300 font-mono">{u.email}</span></TableCell>
                     <TableCell><span className="text-xs text-muted-foreground">{u.company || '—'}</span></TableCell>
                     <TableCell><Badge variant={roleVariant[u.role] || 'secondary'} className="capitalize">{u.role}</Badge></TableCell>
                     <TableCell><Badge variant={statusVariant[u.status] || 'secondary'} className="capitalize">{u.status}</Badge></TableCell>
@@ -206,11 +206,11 @@ export const UserManagement: React.FC = () => {
       <Dialog isOpen={!!editUser} onClose={() => setEditUser(null)} title="Edit User Access">
         {editUser && (
           <div className="space-y-4 mt-3">
-            <div className="flex items-center gap-3 p-3 rounded-xl glassmorphism border border-white/5">
+            <div className="flex items-center gap-3 p-3 rounded-xl glassmorphism border border-slate-200 dark:border-white/5">
               <img src={editUser.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(editUser.name)}&background=A855F7&color=fff&size=64`}
                 alt={editUser.name} className="h-10 w-10 rounded-lg object-cover border border-[#A855F7]/20" />
               <div>
-                <p className="text-sm font-bold text-slate-200">{editUser.name}</p>
+                <p className="text-sm font-bold text-slate-800 dark:text-slate-200">{editUser.name}</p>
                 <p className="text-xs text-muted-foreground font-mono">{editUser.email}</p>
               </div>
             </div>
@@ -247,7 +247,7 @@ export const UserManagement: React.FC = () => {
       <Dialog isOpen={!!deleteUser} onClose={() => setDeleteUser(null)} title="Delete User Account">
         <div className="flex items-center gap-3 my-4 p-3 rounded-xl bg-rose-500/10 border border-rose-500/20">
           <UserX className="h-5 w-5 text-rose-400 flex-shrink-0" />
-          <p className="text-sm text-slate-300">Permanently delete <strong className="text-white">{deleteUser?.name}</strong>'s account?</p>
+          <p className="text-sm text-slate-700 dark:text-slate-300">Permanently delete <strong className="text-slate-900 dark:text-white">{deleteUser?.name}</strong>'s account?</p>
         </div>
         <div className="flex justify-end gap-2">
           <Button variant="secondary" onClick={() => setDeleteUser(null)}>Cancel</Button>

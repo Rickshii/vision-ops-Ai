@@ -91,7 +91,7 @@ export const ImageUpload: React.FC = () => {
   return (
     <div className="space-y-5 animate-fade-in-up">
       <div>
-        <h1 className="text-2xl font-black text-white tracking-tight">AI Image Analyzer</h1>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">AI Image Analyzer</h1>
         <p className="text-sm text-muted-foreground mt-0.5">Upload images for real-time YOLOv11 object detection and bounding box annotation</p>
       </div>
 
@@ -118,7 +118,7 @@ export const ImageUpload: React.FC = () => {
                 onClick={() => fileInputRef.current?.click()}
                 className={`relative border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 overflow-hidden ${
                   isDragging ? 'border-[#A855F7] bg-[#A855F7]/10 shadow-[0_0_20px_rgba(168,85,247,0.2)] scale-[1.01]'
-                  : 'border-white/10 hover:border-[#A855F7]/40 hover:bg-white/[0.02]'
+                  : 'border-slate-300 dark:border-white/10 hover:border-[#A855F7]/40 hover:bg-slate-50 dark:hover:bg-white/[0.02]'
                 }`}
               >
                 <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
@@ -127,7 +127,7 @@ export const ImageUpload: React.FC = () => {
                   style={{ backgroundImage: 'linear-gradient(rgba(168,85,247,1) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,1) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
                 {preview ? (
                   <div className="relative z-10">
-                    <img src={preview} alt="Preview" className="max-h-44 mx-auto rounded-xl object-contain border border-white/10" />
+                    <img src={preview} alt="Preview" className="max-h-44 mx-auto rounded-xl object-contain border border-slate-300 dark:border-white/10" />
                     <p className="mt-2 text-xs text-muted-foreground truncate">{file?.name}</p>
                   </div>
                 ) : (
@@ -136,7 +136,7 @@ export const ImageUpload: React.FC = () => {
                       <UploadCloud className="h-7 w-7 text-[#C084FC]" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-slate-300">Drop image here or click to browse</p>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-300">Drop image here or click to browse</p>
                       <p className="text-xs mt-1">JPG, PNG, WebP • Max 15MB</p>
                     </div>
                   </div>
@@ -184,11 +184,11 @@ export const ImageUpload: React.FC = () => {
                     {result.detections.map((det, idx) => {
                       const color = LABEL_COLORS[idx % LABEL_COLORS.length];
                       return (
-                        <div key={idx} className="flex items-center gap-3 p-2.5 rounded-xl border border-white/5 bg-white/[0.02]">
+                        <div key={idx} className="flex items-center gap-3 p-2.5 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white/[0.02]">
                           <div className="h-3 w-3 rounded-sm flex-shrink-0" style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}80` }} />
-                          <span className="text-sm font-semibold text-slate-200 flex-1 capitalize">{det.className}</span>
+                          <span className="text-sm font-semibold text-slate-800 dark:text-slate-200 flex-1 capitalize">{det.className}</span>
                           <div className="flex items-center gap-2">
-                            <div className="w-16 bg-white/5 rounded-full h-1.5 overflow-hidden">
+                            <div className="w-16 bg-slate-200 dark:bg-white/5 rounded-full h-1.5 overflow-hidden">
                               <div className="h-full rounded-full" style={{ width: `${det.confidence * 100}%`, backgroundColor: color }} />
                             </div>
                             <span className="text-xs font-mono text-muted-foreground w-10 text-right">{Math.round(det.confidence * 100)}%</span>
@@ -225,26 +225,26 @@ export const ImageUpload: React.FC = () => {
                 )}
               </div>
             </CardHeader>
-            <CardContent className="flex items-center justify-center min-h-[400px] rounded-b-2xl bg-black/20 border-t border-white/5">
+            <CardContent className="flex items-center justify-center min-h-[400px] rounded-b-2xl bg-slate-100 dark:bg-black/20 border-t border-slate-200 dark:border-white/5">
               {result ? (
-                <canvas ref={canvasRef} className="max-w-full max-h-[500px] rounded-xl border border-white/10 object-contain" />
+                <canvas ref={canvasRef} className="max-w-full max-h-[500px] rounded-xl border border-slate-300 dark:border-white/10 object-contain" />
               ) : preview ? (
                 <div className="flex flex-col items-center gap-3">
-                  <img src={preview} alt="Preview" className="max-h-80 max-w-full rounded-xl border border-white/10" />
+                  <img src={preview} alt="Preview" className="max-h-80 max-w-full rounded-xl border border-slate-300 dark:border-white/10" />
                   <p className="text-xs text-muted-foreground">Click "Run AI Analysis" to annotate</p>
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-5 text-muted-foreground">
-                  <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-[#A855F7]/10 to-[#06B6D4]/10 border border-white/8 flex items-center justify-center">
+                  <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-[#A855F7]/10 to-[#06B6D4]/10 border border-slate-200 dark:border-white/8 flex items-center justify-center">
                     <ImageIcon className="h-10 w-10 opacity-20" />
                   </div>
                   <div className="text-center">
-                    <p className="text-sm font-semibold text-slate-400">No Image Loaded</p>
+                    <p className="text-sm font-semibold text-slate-700 dark:text-slate-400">No Image Loaded</p>
                     <p className="text-xs mt-1">Upload an image to start AI detection</p>
                   </div>
                   <div className="grid grid-cols-3 gap-3">
                     {[{ label: 'Person Detection', color: '#A855F7' }, { label: 'Vehicle Tracking', color: '#06B6D4' }, { label: 'Object Recognition', color: '#EC4899' }].map(cap => (
-                      <div key={cap.label} className="text-center p-3 rounded-xl glassmorphism border border-white/5">
+                      <div key={cap.label} className="text-center p-3 rounded-xl glassmorphism border border-slate-200 dark:border-white/5">
                         <div className="h-6 w-6 rounded-lg mx-auto mb-1.5 flex items-center justify-center" style={{ backgroundColor: `${cap.color}20`, border: `1px solid ${cap.color}30` }}>
                           <Zap className="h-3 w-3" style={{ color: cap.color }} />
                         </div>

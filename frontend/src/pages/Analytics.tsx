@@ -112,7 +112,7 @@ export const Analytics: React.FC = () => {
     <div className="space-y-5 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Analytics & Insights</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Analytics & Insights</h1>
           <p className="text-sm text-muted-foreground mt-0.5">AI detection performance metrics and operational trends</p>
         </div>
       <div className="flex items-center gap-3">
@@ -133,14 +133,14 @@ export const Analytics: React.FC = () => {
         {kpis.map(kpi => {
           const Icon = kpi.icon;
           return (
-            <div key={kpi.label} className="rounded-2xl glassmorphism border border-white/8 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15">
+            <div key={kpi.label} className="rounded-2xl glassmorphism border border-slate-200 dark:border-white/10 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-white/15">
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{kpi.label}</p>
                   <p className="text-2xl font-black mt-1.5" style={{ color: kpi.color, textShadow: `0 0 20px ${kpi.glow}` }}>{kpi.value}</p>
                   <p className="text-xs text-muted-foreground mt-1">{kpi.sub}</p>
                 </div>
-                <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-white/[0.02] border border-white/5">
+                <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5">
                   <Icon className="h-4.5 w-4.5" style={{ color: kpi.color }} />
                 </div>
               </div>

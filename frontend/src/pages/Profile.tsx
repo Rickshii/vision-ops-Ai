@@ -144,15 +144,15 @@ export const Profile: React.FC = () => {
   return (
     <div className="space-y-5 animate-fade-in-up max-w-3xl">
       <div>
-        <h1 className="text-2xl font-black text-white tracking-tight">My Profile</h1>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">My Profile</h1>
         <p className="text-sm text-muted-foreground mt-0.5">Manage your personal information, password, and API credentials</p>
       </div>
 
       {/* Profile Header Card */}
-      <div className="rounded-2xl glassmorphism border border-white/8 p-6 transition-all hover:border-white/12 duration-300">
+      <div className="rounded-2xl glassmorphism border border-slate-200 dark:border-white/8 p-6 transition-all hover:border-slate-300 dark:hover:border-white/12 duration-300">
         <div className="flex items-center gap-5">
           <div
-            className="relative group cursor-pointer overflow-hidden rounded-2xl border border-white/10"
+            className="relative group cursor-pointer overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10"
             onClick={() => {
               setSelectedAvatar(user?.avatarUrl || '');
               setIsAvatarModalOpen(true);
@@ -172,13 +172,13 @@ export const Profile: React.FC = () => {
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h2 className="text-xl font-black text-white leading-tight">{user?.name}</h2>
+              <h2 className="text-xl font-black text-slate-900 dark:text-white leading-tight">{user?.name}</h2>
               <Badge variant={roleColors[user?.role || 'viewer']} className="capitalize">
                 {user?.role}
               </Badge>
             </div>
             <p className="text-xs text-muted-foreground mt-1 font-mono">{user?.email}</p>
-            {user?.company && <p className="text-xs text-slate-300 font-semibold mt-1">{user.company}</p>}
+            {user?.company && <p className="text-xs text-slate-700 dark:text-slate-300 font-semibold mt-1">{user.company}</p>}
             <p className="text-[10px] text-muted-foreground mt-1 uppercase tracking-widest font-bold">Member since {new Date(user?.createdAt || '').toLocaleDateString()}</p>
           </div>
         </div>
@@ -305,7 +305,7 @@ export const Profile: React.FC = () => {
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Your API Key</label>
                 <div className="flex items-center gap-2">
-                  <div className="flex-1 bg-black/30 border border-white/5 rounded-xl px-3 py-2.5 font-mono text-xs text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
+                  <div className="flex-1 bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/5 rounded-xl px-3 py-2.5 font-mono text-xs text-slate-800 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
                     {user?.apiKey || 'No API key assigned'}
                   </div>
                   <Button
@@ -320,8 +320,8 @@ export const Profile: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl glassmorphism border border-white/5 space-y-2">
-                <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Example API Usage</p>
+              <div className="p-4 rounded-xl glassmorphism border border-slate-200 dark:border-white/5 space-y-2">
+                <p className="text-[10px] font-bold text-slate-800 dark:text-slate-300 uppercase tracking-widest">Example API Usage</p>
                 <div className="font-mono text-xs text-slate-400 space-y-1.5 pt-1">
                   <p className="text-slate-500">// Authenticate requests with your API key</p>
                   <p><span className="text-emerald-400">GET</span> http://localhost:5000/api/cameras</p>
@@ -367,12 +367,12 @@ export const Profile: React.FC = () => {
             <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Preview</p>
           </div>
 
-          <div className="space-y-3 border-t border-white/5 pt-4">
+          <div className="space-y-3 border-t border-slate-200 dark:border-white/5 pt-4">
             <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">Option 1: Upload custom image</label>
             <div className="flex items-center gap-3">
-              <label className="flex-1 flex flex-col items-center justify-center border border-dashed border-white/10 hover:border-[#A855F7]/40 rounded-xl p-4 cursor-pointer transition-all bg-white/[0.01]">
+              <label className="flex-1 flex flex-col items-center justify-center border border-dashed border-slate-300 dark:border-white/10 hover:border-[#A855F7]/40 rounded-xl p-4 cursor-pointer transition-all bg-slate-50 dark:bg-white/[0.01]">
                 <Upload className="h-5 w-5 text-muted-foreground mb-1.5" />
-                <span className="text-xs font-semibold text-slate-200">Choose Image File</span>
+                <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">Choose Image File</span>
                 <span className="text-[10px] text-muted-foreground mt-0.5">PNG, JPG, GIF (Max 5MB)</span>
                 <input
                   type="file"
@@ -387,7 +387,7 @@ export const Profile: React.FC = () => {
             )}
           </div>
 
-          <div className="space-y-3 border-t border-white/5 pt-4">
+          <div className="space-y-3 border-t border-slate-200 dark:border-white/5 pt-4">
             <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block">Option 2: Select AI Preset Avatar</label>
             <div className="grid grid-cols-3 gap-2">
               {presets.map((preset, idx) => (
@@ -395,10 +395,10 @@ export const Profile: React.FC = () => {
                   key={idx}
                   type="button"
                   onClick={() => setSelectedAvatar(preset.url)}
-                  className={`relative p-2 rounded-xl border bg-white/[0.01] hover:bg-white/[0.03] transition-all flex items-center justify-center ${
+                  className={`relative p-2 rounded-xl border bg-slate-50 dark:bg-white/[0.01] hover:bg-slate-100 dark:hover:bg-white/[0.03] transition-all flex items-center justify-center ${
                     selectedAvatar === preset.url
                       ? 'border-[#A855F7] bg-[#A855F7]/10 shadow-[0_0_10px_rgba(168,85,247,0.2)]'
-                      : 'border-white/5 hover:border-white/10'
+                      : 'border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10'
                   }`}
                   title={preset.name}
                 >
@@ -417,7 +417,7 @@ export const Profile: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-end gap-2 border-t border-white/5 pt-4">
+          <div className="flex justify-end gap-2 border-t border-slate-200 dark:border-white/5 pt-4">
             <Button variant="secondary" onClick={() => setIsAvatarModalOpen(false)}>Cancel</Button>
             <Button onClick={handleSaveAvatar} isLoading={isSavingAvatar} className="gap-1.5">
               <CheckCircle2 className="h-4 w-4" /> Save Picture

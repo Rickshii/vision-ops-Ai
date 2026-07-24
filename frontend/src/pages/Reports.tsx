@@ -68,7 +68,7 @@ export const Reports: React.FC = () => {
   return (
     <div className="space-y-5 animate-fade-in-up">
       <div>
-        <h1 className="text-2xl font-black text-white tracking-tight">Reports Center</h1>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Reports Center</h1>
         <p className="text-sm text-muted-foreground mt-0.5">Generate professional PDF, CSV, and Excel incident reports with date-range filtering</p>
       </div>
 
@@ -94,7 +94,7 @@ export const Reports: React.FC = () => {
                 <div className="flex flex-wrap gap-2">
                   {presets.map(p => (
                     <button key={p.label} onClick={() => applyPreset(p.days)}
-                      className="px-3 py-1.5 text-xs font-semibold rounded-xl border border-white/10 text-muted-foreground hover:text-slate-200 hover:border-[#A855F7]/40 hover:bg-[#A855F7]/5 transition-all duration-200">
+                      className="px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-300 dark:border-white/10 text-muted-foreground hover:text-slate-900 dark:hover:text-slate-200 hover:border-[#A855F7]/40 hover:bg-[#A855F7]/5 transition-all duration-200">
                       {p.label}
                     </button>
                   ))}
@@ -138,7 +138,7 @@ export const Reports: React.FC = () => {
               </div>
 
               {/* Scope Preview */}
-              <div className="p-3 rounded-xl glassmorphism border border-white/5">
+              <div className="p-3 rounded-xl glassmorphism border border-slate-200 dark:border-white/5">
                 <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-2">Report Scope Preview</p>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="purple" className="text-[10px]">📅 {filters.startDate} → {filters.endDate}</Badge>
@@ -240,7 +240,7 @@ export const Reports: React.FC = () => {
             </div>
           )}
 
-          <div className="flex items-start gap-2 p-3 glassmorphism border border-white/5 rounded-xl text-xs text-muted-foreground">
+          <div className="flex items-start gap-2 p-3 glassmorphism border border-slate-200 dark:border-white/5 rounded-xl text-xs text-muted-foreground">
             <Info className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-[#C084FC]" />
             Reports require the backend running on port 5000. All data is filtered server-side.
           </div>

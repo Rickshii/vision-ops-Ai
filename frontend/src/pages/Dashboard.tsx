@@ -154,7 +154,7 @@ export const Dashboard: React.FC = () => {
       {/* Page header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Operations Dashboard</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Operations Dashboard</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Real-time overview of your visual security infrastructure</p>
         </div>
         <div className="flex items-center gap-2">
@@ -177,7 +177,7 @@ export const Dashboard: React.FC = () => {
           return (
             <div
               key={card.title}
-              className="rounded-2xl glassmorphism border border-white/8 p-5 hover:border-white/15 transition-all duration-300 hover:-translate-y-1 cursor-default group"
+              className="rounded-2xl glassmorphism border border-slate-200 dark:border-white/10 p-5 hover:border-slate-300 dark:hover:border-white/15 transition-all duration-300 hover:-translate-y-1 cursor-default group"
               style={{ ['--glow' as any]: card.glow }}
             >
               <div className="flex items-start justify-between mb-4">
@@ -192,7 +192,7 @@ export const Dashboard: React.FC = () => {
               </div>
               <div>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="text-3xl font-black text-white">{card.value}</span>
+                  <span className="text-3xl font-black text-slate-900 dark:text-white">{card.value}</span>
                   {card.total !== undefined && (
                     <span className="text-sm text-muted-foreground font-mono">/ {card.total}</span>
                   )}
@@ -200,7 +200,7 @@ export const Dashboard: React.FC = () => {
                 <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mt-0.5">{card.title}</p>
                 <p className="text-[11px] text-muted-foreground mt-1">{card.detail}</p>
               </div>
-              <div className={`mt-3 pt-3 border-t border-white/5 flex items-center gap-1 text-xs ${card.trendUp ? 'text-emerald-400' : 'text-rose-400'}`}>
+              <div className={`mt-3 pt-3 border-t border-slate-200 dark:border-white/5 flex items-center gap-1 text-xs ${card.trendUp ? 'text-emerald-400' : 'text-rose-400'}`}>
                 {card.trendUp ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
                 {card.trend}
               </div>
@@ -309,17 +309,17 @@ export const Dashboard: React.FC = () => {
           <CardContent className="space-y-2">
             {isLoading ? (
               <div className="space-y-2">
-                {[1,2,3].map(i => <div key={i} className="h-8 rounded-lg bg-white/5 animate-pulse" />)}
+                {[1,2,3].map(i => <div key={i} className="h-8 rounded-lg bg-slate-200 dark:bg-white/5 animate-pulse" />)}
               </div>
             ) : cameras.slice(0, 5).map(cam => (
-              <div key={cam.id} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+              <div key={cam.id} className="flex items-center justify-between py-2 border-b border-slate-200 dark:border-white/5 last:border-0">
                 <div className="flex items-center gap-2.5">
                   <div className={`h-2 w-2 rounded-full flex-shrink-0 ${
                     cam.status === 'active' ? 'bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)]' :
                     cam.status === 'error' ? 'bg-rose-500 shadow-[0_0_6px_rgba(244,63,94,0.7)]' : 'bg-slate-600'
                   } ${cam.status === 'active' ? 'animate-pulse' : ''}`} />
                   <div>
-                    <p className="text-xs font-semibold text-slate-200 truncate max-w-[130px]">{cam.name}</p>
+                    <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[130px]">{cam.name}</p>
                     <p className="text-[10px] text-muted-foreground">{cam.zone}</p>
                   </div>
                 </div>
@@ -352,17 +352,17 @@ export const Dashboard: React.FC = () => {
           <CardContent className="space-y-2">
             {isLoading ? (
               <div className="space-y-2">
-                {[1,2,3].map(i => <div key={i} className="h-10 rounded-lg bg-white/5 animate-pulse" />)}
+                {[1,2,3].map(i => <div key={i} className="h-10 rounded-lg bg-slate-200 dark:bg-white/5 animate-pulse" />)}
               </div>
             ) : alerts.slice(0, 4).map(alert => (
-              <div key={alert.id} className="flex items-start gap-3 py-2 border-b border-white/5 last:border-0">
+              <div key={alert.id} className="flex items-start gap-3 py-2 border-b border-slate-200 dark:border-white/5 last:border-0">
                 <div className={`h-2 w-2 rounded-full flex-shrink-0 mt-1.5 ${
                   alert.severity === 'critical' ? 'bg-rose-500 shadow-[0_0_6px_rgba(244,63,94,0.7)]' :
                   alert.severity === 'high' ? 'bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.7)]' :
                   alert.severity === 'medium' ? 'bg-yellow-500' : 'bg-blue-500'
                 }`} />
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold text-slate-200 truncate">{alert.type}</p>
+                  <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">{alert.type}</p>
                   <p className="text-[10px] text-muted-foreground truncate">{alert.cameraName}</p>
                 </div>
                 <Badge variant={getStatusBadge(alert.status)} className="text-[9px] flex-shrink-0">{alert.status}</Badge>
@@ -385,7 +385,7 @@ export const Dashboard: React.FC = () => {
             <Cpu className="h-4 w-4 text-white" />
           </div>
           <div>
-            <p className="text-sm font-bold text-slate-100">AI Intelligence Summary</p>
+            <p className="text-sm font-bold text-slate-900 dark:text-slate-100">AI Intelligence Summary</p>
             <p className="text-[10px] text-muted-foreground">Generated by VisionOps Neural Engine</p>
           </div>
           <Badge variant="cyan" className="ml-auto text-[9px]">BETA</Badge>
@@ -398,11 +398,11 @@ export const Dashboard: React.FC = () => {
           ].map(insight => {
             const Icon = insight.icon;
             return (
-              <div key={insight.label} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+              <div key={insight.label} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5">
                 <Icon className="h-4 w-4 text-[#22D3EE] flex-shrink-0" />
                 <div>
                   <p className="text-[10px] text-muted-foreground">{insight.label}</p>
-                  <p className="text-xs font-bold text-slate-200">{insight.value}</p>
+                  <p className="text-xs font-bold text-slate-800 dark:text-slate-200">{insight.value}</p>
                 </div>
               </div>
             );

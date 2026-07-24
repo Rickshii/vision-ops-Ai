@@ -21,7 +21,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode; roles?: string[] }> 
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="h-8 w-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
           <p className="text-sm text-muted-foreground">Loading VisionOps AI...</p>
@@ -39,9 +39,9 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode; roles?: string[] }> 
       <Layout>
         <div className="flex flex-col items-center justify-center h-64 text-muted-foreground gap-4">
           <div className="text-5xl">🔒</div>
-          <h2 className="text-lg font-semibold text-slate-200">Access Restricted</h2>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-200">Access Restricted</h2>
           <p className="text-sm text-center">
-            Your account role (<strong className="text-slate-300">{user.role}</strong>) does not have permission to access this page.
+            Your account role (<strong className="text-slate-800 dark:text-slate-300">{user.role}</strong>) does not have permission to access this page.
           </p>
         </div>
       </Layout>
@@ -57,7 +57,7 @@ const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
         <div className="h-8 w-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
       </div>
     );

@@ -51,14 +51,14 @@ export const Register: React.FC = () => {
           <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#A855F7] to-[#EC4899] flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.5)]">
             <Shield className="h-5 w-5 text-white" />
           </div>
-          <span className="font-black text-lg text-white">VisionOps <span className="neon-gradient-text">AI</span></span>
+          <span className="font-black text-lg text-slate-900 dark:text-white">VisionOps <span className="neon-gradient-text">AI</span></span>
         </div>
 
         <div className="glass-panel-purple rounded-2xl p-8 relative overflow-hidden">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#A855F7]/60 to-transparent" />
 
           <div className="mb-6">
-            <h3 className="text-2xl font-black text-white mb-1">Create Account</h3>
+            <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-1">Create Account</h3>
             <p className="text-sm text-muted-foreground">Register a new operator profile on the platform</p>
           </div>
 
@@ -115,7 +115,7 @@ export const Register: React.FC = () => {
             </Button>
           </form>
 
-          <div className="mt-6 pt-5 border-t border-white/5 text-center">
+          <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/5 text-center">
             <p className="text-sm text-muted-foreground">
               Already have an account?{' '}
               <Link to="/login" className="font-semibold text-[#C084FC] hover:text-[#A855F7] transition-colors">

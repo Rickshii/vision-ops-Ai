@@ -173,7 +173,7 @@ export const AlertsLog: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Alerts Log</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Alerts Log</h1>
           <p className="text-sm text-muted-foreground mt-0.5">All AI-detected security events with real-time updates</p>
         </div>
         <div className="flex items-center gap-2">
@@ -192,9 +192,9 @@ export const AlertsLog: React.FC = () => {
       {/* Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {summaryCards.map(s => (
-          <div key={s.label} className="rounded-2xl glassmorphism border border-white/8 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15">
+          <div key={s.label} className="rounded-2xl glassmorphism border border-slate-200 dark:border-white/10 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-white/15">
             <Badge variant={s.variant} className="mb-2 text-[9px]">{s.label}</Badge>
-            <p className="text-3xl font-black text-white" style={{ textShadow: `0 0 20px ${s.color}40` }}>{s.value}</p>
+            <p className="text-3xl font-black text-slate-900 dark:text-white" style={{ textShadow: `0 0 20px ${s.color}40` }}>{s.value}</p>
           </div>
         ))}
       </div>
@@ -249,7 +249,7 @@ export const AlertsLog: React.FC = () => {
               <TableHeader>
                 <TableRow>
                   <TableHead>
-                    <button onClick={() => toggleSort('severity')} className="flex items-center hover:text-slate-200 transition-colors font-bold">
+                    <button onClick={() => toggleSort('severity')} className="flex items-center hover:text-slate-700 dark:hover:text-slate-200 transition-colors font-bold">
                       Severity <SortIcon field="severity" />
                     </button>
                   </TableHead>
@@ -257,7 +257,7 @@ export const AlertsLog: React.FC = () => {
                   <TableHead>Camera</TableHead>
                   <TableHead>Objects Detected</TableHead>
                   <TableHead>
-                    <button onClick={() => toggleSort('timestamp')} className="flex items-center hover:text-slate-200 transition-colors font-bold">
+                    <button onClick={() => toggleSort('timestamp')} className="flex items-center hover:text-slate-700 dark:hover:text-slate-200 transition-colors font-bold">
                       Time <SortIcon field="timestamp" />
                     </button>
                   </TableHead>
@@ -274,11 +274,11 @@ export const AlertsLog: React.FC = () => {
                     <TableCell>
                       <div className="flex items-center gap-2">
                         <AlertTriangle className="h-3.5 w-3.5 text-muted-foreground flex-shrink-0" />
-                        <span className="text-sm font-semibold text-slate-200">{alert.type}</span>
+                        <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">{alert.type}</span>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <p className="text-xs text-slate-300 font-medium">{alert.cameraName}</p>
+                      <p className="text-xs text-slate-700 dark:text-slate-300 font-medium">{alert.cameraName}</p>
                     </TableCell>
                     <TableCell>
                       <div className="flex flex-wrap gap-1">
@@ -334,18 +334,18 @@ export const AlertsLog: React.FC = () => {
                 { label: 'Type', value: selectedAlert.type },
                 { label: 'Camera', value: selectedAlert.cameraName },
               ].map(f => (
-                <div key={f.label} className="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div key={f.label} className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5">
                   <p className="text-muted-foreground font-bold uppercase tracking-widest text-[9px] mb-1">{f.label}</p>
-                  <p className="text-slate-200 font-semibold">{f.value}</p>
+                  <p className="text-slate-800 dark:text-slate-200 font-semibold">{f.value}</p>
                 </div>
               ))}
-              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+              <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5">
                 <p className="text-muted-foreground font-bold uppercase tracking-widest text-[9px] mb-1">Severity</p>
                 <Badge variant={getSeverityBadge(selectedAlert.severity)} className="text-[10px]">{selectedAlert.severity}</Badge>
               </div>
-              <div className="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+              <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5">
                 <p className="text-muted-foreground font-bold uppercase tracking-widest text-[9px] mb-1">Time</p>
-                <p className="text-slate-200 font-mono text-[10px]">{new Date(selectedAlert.timestamp).toLocaleString()}</p>
+                <p className="text-slate-800 dark:text-slate-200 font-mono text-[10px]">{new Date(selectedAlert.timestamp).toLocaleString()}</p>
               </div>
             </div>
 
@@ -372,7 +372,7 @@ export const AlertsLog: React.FC = () => {
                     <Download className="h-3 w-3" /> Download
                   </a>
                 </div>
-                <div className="rounded-xl overflow-hidden border border-white/10">
+                <div className="rounded-xl overflow-hidden border border-slate-300 dark:border-white/10">
                   <img src={selectedAlert.snapshotUrl} alt="Incident snapshot" className="w-full max-h-48 object-cover" />
                 </div>
               </div>
@@ -394,7 +394,7 @@ export const AlertsLog: React.FC = () => {
                 onChange={e => setNotes(e.target.value)}
                 placeholder="Add investigation notes or resolution details…"
                 rows={3}
-                className="w-full rounded-xl border border-border/40 bg-white/5 px-4 py-2.5 text-sm text-slate-100 placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/40 resize-none transition-all"
+                className="w-full rounded-xl border border-border/40 bg-slate-100 dark:bg-white/5 px-4 py-2.5 text-sm text-slate-900 dark:text-slate-100 placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/40 resize-none transition-all"
               />
             </div>
 

@@ -45,7 +45,7 @@ export const TabsList: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => (
   <div
-    className={`inline-flex items-center justify-center rounded-2xl glassmorphism border border-white/8 p-1 text-muted-foreground gap-1 ${className}`}
+    className={`inline-flex items-center justify-center rounded-2xl glassmorphism border border-slate-200 dark:border-white/10 p-1 text-muted-foreground gap-1 ${className}`}
     {...props}
   >
     {children}
@@ -72,7 +72,7 @@ export const TabsTrigger: React.FC<TabsTriggerProps> = ({
       className={`inline-flex items-center justify-center whitespace-nowrap rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none ${
         isActive
           ? "bg-gradient-to-r from-[#A855F7] to-[#EC4899] text-white shadow-[0_0_15px_rgba(168,85,247,0.35)]"
-          : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+          : "text-muted-foreground hover:text-foreground hover:bg-slate-100 dark:hover:bg-white/5"
       } ${className}`}
       onClick={() => context.onValueChange(value)}
       {...props}

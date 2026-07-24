@@ -122,7 +122,7 @@ const CameraFeed: React.FC<{
   const isOnline = aiOnline && streamOk;
 
   return (
-    <div className={`relative overflow-hidden bg-black rounded-2xl border border-white/8 group transition-all duration-300 ${isFullscreen ? 'h-full' : 'aspect-video'}`}>
+    <div className={`relative overflow-hidden bg-black rounded-2xl border border-slate-200 dark:border-white/10 group transition-all duration-300 ${isFullscreen ? 'h-full' : 'aspect-video'}`}>
       {/* Hidden canvas for recording */}
       <canvas ref={canvasRef} className="hidden" />
 
@@ -149,7 +149,7 @@ const CameraFeed: React.FC<{
               </div>
               <div className="text-center px-4">
                 <p className="text-xs font-bold text-amber-400 mb-1">AI Service Offline</p>
-                <p className="text-[10px] text-slate-500 font-mono">Run: <span className="text-slate-300">python main.py</span> in /ai-service</p>
+                <p className="text-[10px] text-slate-500 font-mono">Run: <span className="text-slate-800 dark:text-slate-300">python main.py</span> in /ai-service</p>
               </div>
             </>
           ) : (
@@ -177,10 +177,10 @@ const CameraFeed: React.FC<{
         <div className="absolute top-3 left-3 flex flex-col gap-1">
           <div className="glassmorphism rounded-lg px-2 py-1 flex items-center gap-1.5 border border-white/10">
             <span className={`h-1.5 w-1.5 rounded-full flex-shrink-0 ${isOnline ? 'bg-emerald-400 shadow-[0_0_4px_rgba(52,211,153,0.8)] animate-pulse' : 'bg-rose-500'}`} />
-            <span className="text-[10px] text-slate-200 font-mono font-medium truncate max-w-[130px]">{camera.name}</span>
+            <span className="text-[10px] text-slate-800 dark:text-slate-200 font-mono font-medium truncate max-w-[130px]">{camera.name}</span>
           </div>
           <div className="glassmorphism rounded-lg px-2 py-0.5 border border-white/5">
-            <span className="text-[9px] text-slate-400 font-mono">{camera.zone} · {camera.location}</span>
+            <span className="text-[9px] text-slate-600 dark:text-slate-400 font-mono">{camera.zone} · {camera.location}</span>
           </div>
         </div>
 
@@ -205,7 +205,7 @@ const CameraFeed: React.FC<{
         <div className="absolute bottom-0 left-0 right-0 glassmorphism px-3 py-1.5 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-auto border-t border-white/5">
           <div className="flex items-center gap-1.5">
             <Radio className={`h-3 w-3 ${isOnline ? 'text-emerald-400' : 'text-rose-400'}`} />
-            <span className="text-[10px] text-slate-300 font-mono font-bold">{isOnline ? 'LIVE' : 'OFFLINE'}</span>
+            <span className="text-[10px] text-slate-700 dark:text-slate-300 font-mono font-bold">{isOnline ? 'LIVE' : 'OFFLINE'}</span>
           </div>
           <div className="flex items-center gap-1">
             <button onClick={handleSnapshot} disabled={!isOnline}
@@ -300,7 +300,7 @@ export const LiveCCTV: React.FC = () => {
       className={`p-2.5 rounded-xl border transition-all duration-200 active:scale-90 ${
         active
           ? 'bg-gradient-to-br from-[#A855F7] to-[#EC4899] border-[#A855F7]/30 shadow-[0_0_12px_rgba(168,85,247,0.3)] text-white'
-          : 'glassmorphism border-white/8 text-muted-foreground hover:text-slate-100 hover:border-white/15'
+          : 'glassmorphism border-slate-200 dark:border-white/10 text-muted-foreground hover:text-slate-900 dark:hover:text-slate-100 hover:border-slate-300 dark:hover:border-white/15'
       }`}>
       {children}
     </button>
@@ -311,14 +311,14 @@ export const LiveCCTV: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Live CCTV Monitoring</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Live CCTV Monitoring</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
             {cameras.length} active camera{cameras.length !== 1 ? 's' : ''} · Hover feed for snapshot &amp; recording controls
           </p>
         </div>
         <div className="flex items-center gap-2">
           {/* Grid Layout Toggle */}
-          <div className="flex items-center gap-1 glassmorphism border border-white/8 rounded-xl p-1">
+          <div className="flex items-center gap-1 glassmorphism border border-slate-200 dark:border-white/10 rounded-xl p-1">
             {[
               { key: '1x1' as const, icon: <Maximize2 className="h-3.5 w-3.5" />, label: 'Single' },
               { key: '2x2' as const, icon: <LayoutGrid className="h-3.5 w-3.5" />, label: '2×2' },
@@ -328,7 +328,7 @@ export const LiveCCTV: React.FC = () => {
                 className={`p-2 rounded-lg transition-all duration-200 text-xs ${
                   gridLayout === opt.key
                     ? 'bg-gradient-to-r from-[#A855F7] to-[#EC4899] text-white shadow-[0_0_10px_rgba(168,85,247,0.3)]'
-                    : 'text-muted-foreground hover:text-slate-200'
+                    : 'text-muted-foreground hover:text-slate-900 dark:hover:text-slate-200'
                 }`}>
                 {opt.icon}
               </button>
@@ -360,7 +360,7 @@ export const LiveCCTV: React.FC = () => {
             <p className="text-sm font-bold text-amber-300">AI Service is not running</p>
             <p className="text-xs text-slate-400 mt-0.5">
               Start the AI service to enable live feeds. Open a terminal and run:
-              <code className="ml-2 px-2 py-0.5 rounded bg-black/30 font-mono text-slate-200 text-[11px]">
+              <code className="ml-2 px-2 py-0.5 rounded bg-slate-200 dark:bg-black/30 font-mono text-slate-800 dark:text-slate-200 text-[11px]">
                 cd ai-service &amp;&amp; python main.py
               </code>
             </p>
@@ -384,7 +384,7 @@ export const LiveCCTV: React.FC = () => {
               </div>
             ))}
             {cameras.length === 0 && (
-              <div className="col-span-full flex items-center justify-center h-64 rounded-2xl glassmorphism border border-dashed border-white/15">
+              <div className="col-span-full flex items-center justify-center h-64 rounded-2xl glassmorphism border border-dashed border-slate-300 dark:border-white/15">
                 <div className="text-center">
                   <Camera className="h-12 w-12 opacity-20 mx-auto mb-3" />
                   <p className="text-sm text-muted-foreground font-semibold">No active cameras found</p>
@@ -410,7 +410,7 @@ export const LiveCCTV: React.FC = () => {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div>
-                  <p className="text-sm font-bold text-slate-100">{selectedCamera.name}</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{selectedCamera.name}</p>
                   <p className="text-xs text-muted-foreground mt-0.5">{selectedCamera.location}</p>
                 </div>
                 <div className="flex flex-wrap gap-1">
@@ -418,11 +418,11 @@ export const LiveCCTV: React.FC = () => {
                     <Badge key={m} variant="cyan" className="text-[9px]">{m}</Badge>
                   ))}
                 </div>
-                <div className="flex items-center gap-2 pt-1 border-t border-white/5">
+                <div className="flex items-center gap-2 pt-1 border-t border-slate-200 dark:border-white/5">
                   <span className={`h-2 w-2 rounded-full ${selectedCamera.status === 'active' ? 'bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)] animate-pulse' : 'bg-slate-600'}`} />
                   <span className="text-xs text-muted-foreground capitalize font-semibold">{selectedCamera.status}</span>
                 </div>
-                <div className="text-[9px] text-muted-foreground pt-1 border-t border-white/5">
+                <div className="text-[9px] text-muted-foreground pt-1 border-t border-slate-200 dark:border-white/5">
                   Hover feed → <span className="text-emerald-400">📷 Snapshot</span> &amp; <span className="text-rose-400">🎥 Record</span>
                 </div>
               </CardContent>
@@ -454,16 +454,16 @@ export const LiveCCTV: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <button onClick={() => setZoom(z => Math.max(50, z - 10))}
-                    className="p-1.5 glassmorphism border border-white/8 rounded-lg transition-colors hover:border-white/15">
-                    <ZoomOut className="h-3.5 w-3.5 text-slate-300" />
+                    className="p-1.5 glassmorphism border border-slate-200 dark:border-white/10 rounded-lg transition-colors hover:border-slate-300 dark:hover:border-white/15">
+                    <ZoomOut className="h-3.5 w-3.5 text-slate-700 dark:text-slate-300" />
                   </button>
-                  <div className="flex-1 bg-white/5 rounded-full h-2 relative overflow-hidden">
+                  <div className="flex-1 bg-slate-200 dark:bg-white/5 rounded-full h-2 relative overflow-hidden">
                     <div className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#A855F7] to-[#EC4899] transition-all shadow-[0_0_6px_rgba(168,85,247,0.5)]"
                       style={{ width: `${((zoom - 50) / 150) * 100}%` }} />
                   </div>
                   <button onClick={() => setZoom(z => Math.min(200, z + 10))}
-                    className="p-1.5 glassmorphism border border-white/8 rounded-lg transition-colors hover:border-white/15">
-                    <ZoomIn className="h-3.5 w-3.5 text-slate-300" />
+                    className="p-1.5 glassmorphism border border-slate-200 dark:border-white/10 rounded-lg transition-colors hover:border-slate-300 dark:hover:border-white/15">
+                    <ZoomIn className="h-3.5 w-3.5 text-slate-700 dark:text-slate-300" />
                   </button>
                 </div>
               </div>
@@ -480,8 +480,8 @@ export const LiveCCTV: React.FC = () => {
                 <button key={cam.id} onClick={() => setSelectedCamera(cam)}
                   className={`w-full text-left px-3 py-2 rounded-xl text-xs transition-all duration-200 ${
                     selectedCamera?.id === cam.id
-                      ? 'bg-gradient-to-r from-[#A855F7]/15 to-[#EC4899]/10 border border-[#A855F7]/25 text-white font-semibold'
-                      : 'text-muted-foreground hover:bg-white/5 hover:text-slate-200 border border-transparent'
+                      ? 'bg-gradient-to-r from-[#A855F7]/15 to-[#EC4899]/10 border border-[#A855F7]/25 text-slate-900 dark:text-white font-semibold'
+                      : 'text-muted-foreground hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-slate-200 border border-transparent'
                   }`}>
                   <div className="flex items-center justify-between">
                     <span className="truncate">{cam.name}</span>

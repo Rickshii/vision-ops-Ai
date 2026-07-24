@@ -47,7 +47,7 @@ export const Settings: React.FC = () => {
     <div className="space-y-5 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">System Settings</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">System Settings</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Configure AI thresholds, notification policies, and data retention rules</p>
         </div>
         <div className="flex items-center gap-2">
@@ -126,7 +126,7 @@ export const Settings: React.FC = () => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl glassmorphism border border-white/5 space-y-2">
+              <div className="p-4 rounded-xl glassmorphism border border-slate-200 dark:border-white/5 space-y-2">
                 <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Current Configuration Summary</p>
                 <div className="grid grid-cols-2 gap-3 pt-1">
                   {[
@@ -137,7 +137,7 @@ export const Settings: React.FC = () => {
                   ].map(([k, v]) => (
                     <div key={k}>
                       <p className="text-[10px] text-muted-foreground font-semibold">{k}</p>
-                      <p className="text-xs font-mono text-slate-300 mt-0.5">{v}</p>
+                      <p className="text-xs font-mono text-slate-800 dark:text-slate-300 mt-0.5">{v}</p>
                     </div>
                   ))}
                 </div>
@@ -160,15 +160,15 @@ export const Settings: React.FC = () => {
               </div>
             </CardHeader>
             <CardContent className="space-y-5">
-              <div className="flex items-center justify-between p-4 rounded-xl glassmorphism border border-white/5">
+              <div className="flex items-center justify-between p-4 rounded-xl glassmorphism border border-slate-200 dark:border-white/5">
                 <div>
-                  <p className="text-sm font-semibold text-slate-200">Email Alerts</p>
+                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Email Alerts</p>
                   <p className="text-xs text-muted-foreground mt-0.5">Send alert emails for high/critical severity events</p>
                 </div>
                 <button
                   onClick={() => setSettings((s: any) => ({ ...s, alertEmailEnabled: !s.alertEmailEnabled }))}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ${
-                    settings?.alertEmailEnabled ? 'bg-[#A855F7]' : 'bg-white/10'
+                    settings?.alertEmailEnabled ? 'bg-[#A855F7]' : 'bg-slate-300 dark:bg-white/10'
                   }`}
                 >
                   <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
@@ -191,10 +191,10 @@ export const Settings: React.FC = () => {
                 </p>
               </div>
 
-              <div className="p-3 glassmorphism border border-white/5 rounded-xl flex items-start gap-3">
+              <div className="p-3 glassmorphism border border-slate-200 dark:border-white/5 rounded-xl flex items-start gap-3">
                 <Bell className="h-4 w-4 text-[#C084FC] mt-0.5 flex-shrink-0" />
                 <div className="text-xs text-muted-foreground">
-                  <strong className="text-slate-300">Browser notifications</strong> are always active when the dashboard is open. No configuration required.
+                  <strong className="text-slate-800 dark:text-slate-300">Browser notifications</strong> are always active when the dashboard is open. No configuration required.
                 </div>
               </div>
             </CardContent>
@@ -248,7 +248,7 @@ export const Settings: React.FC = () => {
                     className={`p-3 rounded-xl border text-sm font-semibold transition-all duration-200 ${
                       settings?.retentionDays === d
                         ? 'bg-[#A855F7]/20 border-[#A855F7]/40 text-[#C084FC] shadow-[0_0_10px_rgba(168,85,247,0.2)]'
-                        : 'border-white/10 text-muted-foreground hover:border-white/20 hover:text-slate-300 hover:bg-white/[0.02]'
+                        : 'border-slate-300 dark:border-white/10 text-muted-foreground hover:border-slate-400 dark:hover:border-white/20 hover:text-slate-900 dark:hover:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/[0.02]'
                     }`}
                   >
                     {d} days
@@ -273,12 +273,12 @@ export const Settings: React.FC = () => {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex items-center gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.01]">
+              <div className="flex items-center gap-3 p-4 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white/[0.01]">
                 <div className={`p-2 rounded-xl ${settings?.firebaseActive ? 'bg-emerald-500/10 border border-emerald-500/20' : 'bg-amber-500/10 border border-amber-500/20'}`}>
                   <Database className={`h-5 w-5 ${settings?.firebaseActive ? 'text-emerald-400' : 'text-amber-400'}`} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-200">
+                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
                     {settings?.firebaseActive ? 'Firebase Firestore' : 'Local JSON Database'}
                   </p>
                   <p className="text-xs text-muted-foreground mt-0.5">
@@ -295,15 +295,15 @@ export const Settings: React.FC = () => {
                 </Badge>
               </div>
 
-              <div className="p-4 rounded-xl glassmorphism border border-white/5 space-y-3">
-                <p className="text-xs font-bold text-slate-300">To enable Firebase Cloud Mode:</p>
+              <div className="p-4 rounded-xl glassmorphism border border-slate-200 dark:border-white/5 space-y-3">
+                <p className="text-xs font-bold text-slate-800 dark:text-slate-300">To enable Firebase Cloud Mode:</p>
                 <ol className="space-y-2 text-xs text-muted-foreground list-decimal list-inside">
                   <li>Create a Firebase project at <span className="font-mono text-purple-400">console.firebase.google.com</span></li>
                   <li>Generate a service account key JSON file</li>
-                  <li>Set environment variables in <span className="font-mono text-slate-300">backend/.env</span></li>
+                  <li>Set environment variables in <span className="font-mono text-slate-800 dark:text-slate-300">backend/.env</span></li>
                   <li>Restart the backend server</li>
                 </ol>
-                <div className="p-3 bg-black/30 border border-white/5 rounded-xl font-mono text-xs text-slate-400 space-y-1">
+                <div className="p-3 bg-slate-100 dark:bg-black/30 border border-slate-200 dark:border-white/5 rounded-xl font-mono text-xs text-slate-600 dark:text-slate-400 space-y-1">
                   <p>FIREBASE_PROJECT_ID=your-project-id</p>
                   <p>FIREBASE_CLIENT_EMAIL=your-service-account@email</p>
                   <p>FIREBASE_PRIVATE_KEY="-----BEGIN..."</p>

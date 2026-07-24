@@ -75,7 +75,7 @@ export const CameraManagement: React.FC = () => {
     <div className="space-y-5 animate-fade-in-up">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tight">Camera Management</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Camera Management</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Configure CCTV streams and AI detection models</p>
         </div>
         <div className="flex items-center gap-2">
@@ -93,7 +93,7 @@ export const CameraManagement: React.FC = () => {
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {stats.map(s => (
-          <div key={s.label} className="rounded-2xl glassmorphism border border-white/8 p-4 transition-all hover:-translate-y-0.5 hover:border-white/15 duration-300">
+          <div key={s.label} className="rounded-2xl glassmorphism border border-slate-200 dark:border-white/10 p-4 transition-all hover:-translate-y-0.5 hover:border-slate-300 dark:hover:border-white/15 duration-300">
             <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">{s.label}</p>
             <p className="text-3xl font-black" style={{ color: s.color, textShadow: `0 0 20px ${s.glow}` }}>{s.value}</p>
           </div>
@@ -134,11 +134,11 @@ export const CameraManagement: React.FC = () => {
                     <TableCell>
                       <div className="flex items-center gap-2.5">
                         <span className={`h-2 w-2 rounded-full flex-shrink-0 ${cam.status === 'active' ? 'bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.7)] animate-pulse' : cam.status === 'error' ? 'bg-rose-500' : 'bg-slate-600'}`} />
-                        <span className="font-semibold text-slate-200 text-sm">{cam.name}</span>
+                        <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm">{cam.name}</span>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <p className="text-xs text-slate-300 font-medium">{cam.location}</p>
+                      <p className="text-xs text-slate-700 dark:text-slate-300 font-medium">{cam.location}</p>
                       <p className="text-[10px] text-muted-foreground">{cam.zone}</p>
                     </TableCell>
                     <TableCell>
@@ -153,7 +153,7 @@ export const CameraManagement: React.FC = () => {
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
-                        <div className="w-20 bg-white/5 rounded-full h-1.5 overflow-hidden">
+                        <div className="w-20 bg-slate-200 dark:bg-white/5 rounded-full h-1.5 overflow-hidden">
                           <div className="h-full rounded-full bg-gradient-to-r from-[#A855F7] to-[#06B6D4]" style={{ width: `${(cam.sensitivity || 0.7) * 100}%` }} />
                         </div>
                         <span className="text-xs font-mono text-muted-foreground">{Math.round((cam.sensitivity || 0.7) * 100)}%</span>
@@ -238,7 +238,7 @@ export const CameraManagement: React.FC = () => {
                   className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 ${
                     form.aiModels.includes(model)
                       ? 'bg-[#A855F7]/20 text-[#C084FC] border-[#A855F7]/40 shadow-[0_0_10px_rgba(168,85,247,0.2)]'
-                      : 'bg-transparent text-muted-foreground border-white/10 hover:border-white/20 hover:text-slate-300'
+                      : 'bg-transparent text-muted-foreground border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 hover:text-slate-700 dark:hover:text-slate-300'
                   }`}
                 >{model}</button>
               ))}

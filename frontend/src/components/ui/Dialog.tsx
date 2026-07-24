@@ -45,7 +45,7 @@ export const Dialog: React.FC<DialogProps> = ({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-lg p-1.5 text-muted-foreground transition-all duration-200 hover:bg-white/10 hover:text-slate-100"
+          className="absolute right-4 top-4 rounded-lg p-1.5 text-muted-foreground transition-all duration-200 hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-100"
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Close</span>
@@ -59,7 +59,7 @@ export const Dialog: React.FC<DialogProps> = ({
         )}
 
         {/* Inner Content */}
-        <div className="text-sm text-slate-300">
+        <div className="text-sm text-slate-700 dark:text-slate-300">
           {children}
         </div>
       </div>
