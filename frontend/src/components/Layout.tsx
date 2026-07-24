@@ -42,8 +42,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     const root = document.documentElement;
     if (isDark) {
       root.classList.remove('light');
+      root.classList.add('dark');
     } else {
       root.classList.add('light');
+      root.classList.remove('dark');
     }
     localStorage.setItem('visionops_theme', isDark ? 'dark' : 'light');
   }, [isDark]);

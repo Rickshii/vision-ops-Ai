@@ -141,7 +141,7 @@ const CameraFeed: React.FC<{
 
       {/* Offline overlay */}
       {!isOnline && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 text-muted-foreground gap-3 z-10">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 text-slate-400 gap-3 z-10">
           {!aiOnline ? (
             <>
               <div className="h-12 w-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
@@ -155,7 +155,7 @@ const CameraFeed: React.FC<{
           ) : (
             <>
               <WifiOff className="h-8 w-8 opacity-30" />
-              <p className="text-xs font-mono">Connecting to stream…</p>
+              <p className="text-xs font-mono text-slate-300">Connecting to stream…</p>
               <div className="flex gap-1">
                 {[0, 150, 300].map(d => (
                   <span key={d} className="h-1.5 w-1.5 rounded-full bg-slate-600 animate-bounce" style={{ animationDelay: `${d}ms` }} />
@@ -209,20 +209,20 @@ const CameraFeed: React.FC<{
           </div>
           <div className="flex items-center gap-1">
             <button onClick={handleSnapshot} disabled={!isOnline}
-              className="p-1.5 hover:bg-white/10 rounded-lg transition-colors text-slate-400 hover:text-emerald-400 disabled:opacity-30"
+              className="p-1.5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-lg transition-colors text-slate-700 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 disabled:opacity-30"
               title="Save Snapshot">
               <Download className="h-3 w-3" />
             </button>
             {isOnline && (
               isRecording ? (
                 <button onClick={stopRecording}
-                  className="p-1.5 hover:bg-rose-500/20 rounded-lg transition-colors text-rose-400 hover:text-rose-300"
+                  className="p-1.5 hover:bg-rose-500/20 rounded-lg transition-colors text-rose-500 dark:text-rose-400 hover:text-rose-400 dark:hover:text-rose-300"
                   title="Stop Recording">
                   <Square className="h-3 w-3 fill-current" />
                 </button>
               ) : (
                 <button onClick={startRecording}
-                  className="p-1.5 hover:bg-rose-500/10 rounded-lg transition-colors text-slate-400 hover:text-rose-400"
+                  className="p-1.5 hover:bg-rose-500/10 rounded-lg transition-colors text-slate-700 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400"
                   title="Record Video Clip">
                   <Video className="h-3 w-3" />
                 </button>
